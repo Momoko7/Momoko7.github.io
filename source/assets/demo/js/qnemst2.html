@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去哪儿面试题二</title>
+</head>
+<body>
+
+<script>
+    /*var N = 4, M  = 4;  //这里无用，附和题意
+    var arrA = [[1,2], [2,1], [3,2], [1,0]];  //M对点
+    var arrB = [[1, 2], [3, 0]];              //Q对点*/
+
+    //生成一个联通的局域网
+    /*大佬的1版*/
+    /*function findNet(arr) {
+        let tempArr = [];
+        tempArr[0] = arr[0];
+        arr.shift();
+        let copyArr = [];
+        while(copyArr.length != arr.length) {
+            copyArr = JSON.parse(JSON.stringify(arr));
+            for(let i = 0; i < arr.length; i++) {
+                /!*
+                * 按位取非（~）运算符，特殊用法：检测是否包含指定字符
+                * 如果不包含 返回-1  ~(-1)==0  !(-1)==true   !!~(-1)==false
+                * 如果包含   返回(-位置)   如:第一位是0  ~0==-1  !~0==false  !!~0==true
+                * *!/
+                if(!!~tempArr[0].indexOf(arr[i][0]) || !!~tempArr[0].indexOf(arr[i][1])) {
+                    tempArr[0] = tempArr[0].concat(arr[i]);
+                    arr.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        tempArr[0] = [...new Set(tempArr[0])];
+        if(arr.length) {
+            tempArr.push(findNet(arr)[0]);
+            return tempArr;
+        } else {
+            return tempArr;
+        }
+    }*/
+    /*--------------------------找出联通域---------------------------------------------*/
+    /*function findNet(yArr) {
+        /!*数组是引用类型   这里防止全局变量被污染  重新赋值给新的变量*!/
+        let arr = yArr.slice();   //ES6：  let arr = [...yArr]
+        let tempArr = [];
+        tempArr[0] = arr[0];
+//        console.log(tempArr)
+        arr.shift();
+        let copyArr = [];
+        /!*
+        * 持续循环遍历arr元素  与tempArr[0]的元素作对比
+        * 如果存在相同的数 将arr的该子元素一并连接给tempArr[0] 并从arr删除该子元素
+        *
+        * while作用：判断经过一次循环之后arr数组是否还要发生变化
+        * 如果有  说明还有相同元素的可能  继续循环遍历
+        * 如果没有   说明arr中含有tempArr[0]中元素的元素已经完全被取出  退出循环
+        * *!/
+        while(copyArr.length != arr.length) {
+            //copyArr = JSON.parse(JSON.stringify(arr));
+//            copyArr = [...arr]   //进入循环的arr  对比值
+            copyArr = [].concat(arr)   //进入循环的arr  对比值
+            /!*遍历arr*!/
+            for(let i = 0; i < arr.length; i++) {
+                if(!!~tempArr[0].indexOf(arr[i][0]) || !!~tempArr[0].indexOf(arr[i][1])) {
+//                    tempArr[0] = tempArr[0].concat(arr[i]);
+//                    console.log(arr.splice(i, 1));
+
+                    tempArr[0] = [...tempArr[0], ...arr.splice(i,1)[0]]
+                    break;   //如果存在 退出本次循环
+                }
+            }
+        }
+        tempArr[0] = [...new Set(tempArr[0])];  //去重
+
+        /!*如果arr中还有值 说明还有没有测试完的值 继续调用该函数 并将返回值连接给本函数得到的已定型的tempArr*!/
+        if(arr.length) {
+//            tempArr = tempArr.concat(findNet(arr));
+//            return tempArr;
+            return [...tempArr, ...findNet(arr)]
+        } else {
+            return tempArr;
+        }
+    }
+    var arr1 = [[0,1],[1,3],[3,4],[4,7],[8,9],[10,11]]
+    console.log(findNet(arr1))*/
+    /*------------------------------------------------------------------------------------*/
+
+    /*function findNet(tempArr,arr){
+        var copyArr = [...arr]
+        var tempArr = []
+        tempArr[0] = [...arr[0]]
+        arr.shift();
+        for (var i = 0; i < arr.length; i++){
+            if ()
+        }
+
+        /!*if (tempArr.length === 0){
+            tempArr[0] = arr[0];
+            arr.shift();
+        }
+        if (arr.length !== 0){
+            for (var i = 0; i < tempArr.length; i++){
+                for (var j = 0; j < arr.length; j++){
+                    for (var k = 0; k < arr[j].length; k++){
+                        if(!!~tempArr[i].indexOf(arr[j][k])){
+                            tempArr[i] = [...tempArr[i], ...arr[j]]
+                            arr.shift()
+                            break;
+                        }else if(k === arr[j].length-1) {
+                            tempArr[i+1] = arr[j]
+                            arr.shift()
+                        }
+                    }
+                }
+            }
+            return findNet([],tempArr)
+        }else {
+            return tempArr
+        }*!/
+    }
+    console.log(findNet([],[[0,1],[3,4],[4,7],[8,9],[10,11]]))*/
+
+    /*
+    * 思路：如果说有n个节点，遍历0~n，将含有n的
+    *
+    * */
+
+    /*function findNet(n,arr) {
+        //由于下面不能直接赋值给tempArrp[i]  不能赋值给一个不存在的数
+        //所以必须先快速建立一个长度为n二维数组
+        var tempArr = Array.apply(null, Array(n)).map((item) => [])
+        for (let i = 0; i < n; i++){
+            for (let j = 0; j < arr.length; j++) {
+                for (let k = 0; k < arr[j].length; k++){
+                    if (i === arr[j][k] || !!~tempArr[i].indexOf(arr[j][k])){
+                        tempArr[i] = [...tempArr[i], ...arr[j]]
+//                        console.log(tempArr[i])
+                        arr[j] = []
+                    }
+                }
+                /!*if (!!~arr[j].indexOf(i)){
+                    console.log(tempArr[i])
+//                    tempArr[i] = tempArr[i].concat(arr[j])
+                    tempArr[i] = [...tempArr[i], ...arr[j]]
+                    console.log(tempArr[i])
+//                    console.log(tempArr[i])
+                    arr[j] = []
+                }*!/
+            }
+        }
+        tempArr = tempArr.filter(item => {
+            if (item.length){
+                return true;
+            }
+        }).map(item => {
+            return [... new Set(item.sort((a,b)=> a-b))]
+        })
+        /!*if (JSON.stringify(tempArr) == JSON.stringify(arr)){
+            return tempArr
+        }else {
+            arr = [...tempArr]
+            findNet(arr.length,arr)
+        }*!/
+        function combine(arr) {
+            var copyArr = [...arr]
+            var resArr = []
+            for (var i = 0; i < arr.length; i++){
+                for (var j = copyArr.length; j > 0; j--){
+                    if (!!~copyArr[i].indexOf(arr)){}
+                }
+            }
+        }
+        return tempArr
+    }
+    console.log(findNet(12,[[7,3],[0,1],[7,4],[4,5],[1,7],[8,9],[1,9],[10,11]]))*/
+
+    /*第一版*/
+    /*function getRes(arrA, arrB) {
+        var arr = []
+        for (var i = 0; i < arrA.length; i++){
+            arr = [...arr, ...arrA[i]]
+        }
+        arr = [... new Set(arr)]
+        console.log(arr)
+        /!*这里是一个闭包函数噢*!/
+        function getQ(arr) {
+            var Q = 2;
+            var res = 0;
+            for (var j = 0; j < Q; j++){
+                if (arr.indexOf(arrB[j][0]) + arr.indexOf(arrB[j][0]) >= 0){
+                    res++;
+                }
+            }
+            return res;
+        }
+        return getQ(arr);
+    }
+
+    console.log(getRes(arrA, arrB))  //2*/
+
+    /*console.log('break实例')
+    for (var i = 0; i < 4; i++){
+        console.log('判断前的i',i)
+        if (i == 1){
+            console.log('break')
+            break;
+        }
+        console.log('判断后的i',i)
+    }
+    console.log('continue实例')
+    for (var i = 0; i < 4; i++){
+        console.log('判断前的i',i)
+        if (i == 1){
+            console.log('continue')
+            continue;
+        }
+        console.log('判断后的i',i)
+    }*/
+
+    /*----------整合版----------------------*/
+    var testArrA = [[0,1],[1,3],[3,4],[4,7],[8,9],[10,11]];  //M对点
+    var testArrB = [[1,2], [3,0],[8,9],[7,3]];                //Q对点
+    function getConnectTimes(connectArr,testArr) {
+        /*整理出所有的域*/
+        function findNet(yArr) {
+            let arr = [...yArr];
+            let tempArr = [];
+            tempArr[0] = [...arr.shift()];
+            let copyArr = [];
+            while(copyArr.length != arr.length) {
+                copyArr = [...arr];
+                for(let i = 0; i < arr.length; i++) {
+                    if(!!~tempArr[0].indexOf(arr[i][0]) || !!~tempArr[0].indexOf(arr[i][1])) {
+                        tempArr[0] = [...tempArr[0], ...arr.splice(i,1)[0]];
+                        break;
+                    }
+                }
+            }
+            tempArr[0] = [...new Set(tempArr[0])];
+            if(arr.length) {
+                return [...tempArr, ...findNet(arr)]
+            } else {
+                return tempArr;
+            }
+        }
+        /*获取连接次数*/
+        function getTimes(domainArr, testArr) {
+            var times = 0;
+            for (var i = 0; i < testArr.length; i++){
+                for (var j = 0; j < domainArr.length; j++){
+                    if (!!~domainArr[j].indexOf(testArr[i][0]) && !!~domainArr[j].indexOf(testArr[i][1])){
+                        times++;
+                        break;
+                    }
+                }
+            }
+            return times;
+        }
+        return getTimes(findNet(connectArr),testArr)
+    }
+    console.log(getConnectTimes(testArrA,testArrB))
+
+</script>
+</body>
+</html>

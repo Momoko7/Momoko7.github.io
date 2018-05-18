@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>美团面试提</title>
+</head>
+<body>
+<script>
+    var data = ['asd 100 100','gbdf 22 3','asdw 423 42'];
+    var result = data.sort().map(item => {
+        var _arr = item.split(' ');
+        var _r = _get((_arr[2]/_arr[1]) * 100);
+        item = _arr[0] + ' ' + _r;
+        return item
+    })
+    console.log(result)
+    function _get (r) {
+        if ( r>=0 && r<=30 ) {
+            return 5
+        }
+        if ( r>30 && r<60 ) {
+            return 4
+        }
+        if ( r>60 && r<=100 ) {
+            return 3
+        }
+    }
+</script>
+</body>
+</html>

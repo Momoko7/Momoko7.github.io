@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链基础</title>
+</head>
+<body>
+
+<script>
+    //先生成一个构造函数People
+    /*var People = function () {
+        this.name1 = `People's name`
+        this.obj = {
+            a:1
+        }
+        this.say = function () {
+            console.log(`say something`)
+        }
+//        this.prototype.name = `People's prototype's name`
+    }
+    People.prototype.eat = function () {
+        console.log(`eaaaat`)
+    }
+    People.prototype.name2 = `name22222`
+    People.prototype.obj1= {
+        b:1
+    }
+    console.log(People)
+    console.log(People.name)
+    console.log(People.name1)
+    console.log(People.prototype)
+    console.log(People.prototype.name)
+    var person1 = new People()
+    var person2 = new People()
+    console.log(person1)
+    console.log(person1.constructor)
+    console.log(person1.name1)
+    console.log(person1.name2)
+    console.log(person1 == person2)
+    console.log(person1.say == person2.say)
+    console.log(person1.obj == person2.obj)
+    console.log(person1.eat == person2.eat)
+    console.log(person1.obj1 == person2.obj1)
+    console.log(person2.obj1.b)
+    console.log(person2.obj1.b)
+    person2.obj1.b = '1111111'
+    console.log(person1.obj1.b)
+    console.log(person2.obj1.b)
+    var P = People
+    var p1 = new P()
+    var p2 = new P()
+    console.log(p1.eat == person2.eat)*/
+
+    //举个例子1
+    /*var o1 = {};
+    var o2 =new Object();
+    var o3 = new f1();
+
+    function f1(){};
+    var f2 = function(){};
+    var f3 = new Function('str','console.log(str)');
+
+    console.log(typeof Object); //function
+    console.log(typeof Function); //function
+
+    console.log(typeof f1); //function
+    console.log(typeof f2); //function
+    console.log(typeof f3); //function
+
+    console.log(typeof o1); //object
+    console.log(typeof o2); //object
+    console.log(typeof o3); //object*/
+
+    //例子2
+    /*function Person(option) {
+        this.name = option.name;
+        this.age = 1
+        this.obj1 = {a:'a的原始值'};
+    }
+    Person.prototype.sayName = function() {
+        console.log(`my name is ${this.name}`);
+    }
+    Person.prototype.obj2 = {b:'原始值'};
+
+    var person1 = new Person({name:'Momoko'});
+    var person2 = new Person({name:'mmmms'});
+    person1.sayName(); // 'Momoko'
+    person2.sayName(); // 'mmmms'
+
+    console.log(person1.obj1 == person2.obj1);      //false  obj1是在构造函数体内部通过this添加
+    console.log(person1.obj2 == person2.obj2);      //ture   obj2是通过prototype添加
+    console.log(person1.sayName == person2.sayName);         //true
+    console.log(person1.constructor == person2.constructor); //true
+
+    /!*修改在构造函数里通过this添加的引用类型值*!/
+    console.log(person1.obj1);      // {a:"a的原始值"}
+    person1.obj1.a = "a被修改了";   // 修改person2的obj1.a的值
+    console.log(person1.obj1);     // {a:"a被修改了"}
+    console.log(person2.obj1);     // {a:"a的原始值"}
+
+    /!*修改prototype里的引用类型值*!/
+    console.log(Person.prototype.obj2);   // {b:"原始值"}
+    console.log(person2.obj2);           // {b:"原始值"}
+    person1.obj2.b = "修改了";           // 修改通过prototype添加的对象的属性
+    console.log(Person.prototype.obj2);  // {b:"修改了"}
+    console.log(person2.obj2);           // {b:"修改了"}
+
+    console.log(Person.prototype.constructor === Person)
+    console.log(Person.prototype.obj1)
+    console.log(Person.prototype.age)
+    console.log(person1.age)
+
+    console.log(Person.__proto__ == Function.prototype)
+    console.log(typeof Function.prototype)
+
+    console.log(Function.__proto__ == Function.prototype)
+    console.log(Function.prototype.__proto__ == Function.prototype)
+    console.log(Function.prototype.__proto__ == Object.prototype)
+    console.log(typeof Function.__proto__ )
+
+    console.log('------------------')
+    console.log(person1.__proto__ == Person.prototype)
+    console.log(Person.prototype.__proto__ == Object.prototype)
+    console.log(Function.prototype.__proto__ == Object.prototype)
+    console.log(Object.prototype.__proto__ == null)
+
+    console.log(Person.__proto__ == Function.prototype);
+    console.log(Function.__proto__ == Function.prototype);*/
+
+    console.log('------------------')
+    function Person(option) {
+        this.name = option.name;
+    }
+    Person.prototype.sayName = function() {
+        console.log(`my name is ${this.name}`);
+    }
+    Person.prototype.sayAge = function() {
+        console.log(18);
+    }
+
+    var person1 = new Person({name:'Momoko'});
+    person1.sayAge = function () {
+        console.log(22)
+    }
+    person1.sayName(); // 'Momoko'
+    person1.sayAge(); // 'Momoko'
+
+    console.log(Person.prototype.a);
+    console.log(person1.__proto__.a);
+    person1.__proto__.a = 1
+    console.log(Person.prototype)
+
+    //    console.log(Function.prototype instanceOf function)
+//    console.log(Function.prototype instanceOf Object)
+    //例子3
+    /*function Person(option) {
+        console.log('执行了Person');
+        this.name = option.name || 'defaultname';
+        this.age = option.age || 18;
+        this.sayName = function() {
+            console.log(this.name)
+        }
+    }
+    var person1 = new Person({name:'momoko',age:'18'}); //执行了Person
+    var person2 = new Person({name:'meg',age:'23'});    //执行了Person
+    person1.sayName(); //momoko
+    person2.sayName(); //meg
+    console.log(person1.constructor === Person); //true
+    console.log(person2.constructor === Person); //true
+    person1.constructor({}); //执行了Person
+
+    var obj = {}
+    console.log(typeof obj.constructor)
+    console.log(typeof Function.constructor)
+    console.log(typeof Object.constructor)
+    console.log(obj.constructor)
+    console.log(Function.constructor)
+    console.log(person1.constructor)
+    console.log(Object.constructor)
+    console.log(typeof Array.constructor)*/
+
+/*    console.log(Number.__proto__ === Function.prototype); // true
+    console.log(Number.constructor === Function);         // true
+
+    console.log(Boolean.__proto__ === Function.prototype);// true
+    console.log(Boolean.constructor === Function);        // true
+
+    console.log(String.__proto__ === Function.prototype); // true
+    console.log(String.constructor === Function);         // true
+
+    // 所有的构造器都来自于Function.prototype，甚至包括根构造器Object及Function自身
+    console.log(Object.__proto__ === Function.prototype); // true
+    console.log(Object.constructor === Function);         // true
+
+    // 所有的构造器都来自于Function.prototype，甚至包括根构造器Object及Function自身
+    console.log(Function.__proto__ === Function.prototype);// true
+    console.log(Function.constructor === Function);        // true
+
+    console.log(Array.__proto__ === Function.prototype);   // true
+    console.log(Array.constructor === Function);           // true
+
+    console.log(RegExp.__proto__ === Function.prototype);  // true
+    console.log(RegExp.constructor === Function);          // true
+
+    console.log(Error.__proto__ === Function.prototype);   // true
+    console.log(Error.constructor === Function);           // true
+
+    console.log(Date.__proto__ === Function.prototype);    // true
+    console.log(Date.constructor === Function);            // true
+
+    console.log(Function.__proto__)*/
+</script>
+</body>
+</html>
