@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue数据双向绑定原理</title>
+    <input type="text" id="iptid">
+    <span id="spid"></span>
+</head>
+<body>
+<div></div>
+<script>
+    var obj = {
+        pwd:'111'
+    }
+    Object.defineProperty(obj, 'username', {
+        get:function (val) {
+            return val+1
+        },
+        set:function (val) {
+//            obj.username
+            return val-1
+        }
+    })
+    document.getElementById('iptid').addEventListener('keyup',function (event) {
+//        document.getElementById('spid').innerText = event.target.value
+        obj.username = event.target.value
+    })
+</script>
+</body>
+</html>
