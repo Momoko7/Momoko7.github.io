@@ -6,9 +6,10 @@ tags:
     - Linux
     - 笔记
 ---
-## Linux常用命令 (2018-05-10)更新
+## Linux常用命令 (2018-06-06)更新
 
 <!--more-->
+用一个 记一个
 
 # 一、关于nginx的停止与重启
 ## 停止
@@ -58,5 +59,12 @@ or
 
     [...]# service iptables status
     
-    
-    
+## centos的关机与重启
+1.shutdown -h now    #立即关机
+2.shutdown -h 10     #十分钟后关机
+3.shutdown -h 10:10  #十点十分关机
+4.shutdown -r now    #立即重启
+5.shutdown -r 10     #十分钟后重启
+6.shutdown -r 10:10  #十点十分重启
+5.rebut              #重启
+5.halt               #关机
