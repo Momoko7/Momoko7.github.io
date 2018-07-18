@@ -187,26 +187,10 @@
 <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <p>目的：让你的文章在google中被搜索到并排名靠前<br>&lt;!–<br>本意是测试用<br>现在是认为有必要写篇博客<br>但今天忒晚了，一不小心就两点半。。。改天补上</p>
-<p>记：<br>seo 优化<br>百度收录 给成熟的链接 反正百度多的是这个教程</p>
-<p>谷歌收录踩过的坑<br>添加网站<br>验证网站 下载文件<br>hexo -g 会默认处理*.html所有文件<br>解决方法： layout: false</p>
-<p>站点地图？<br>–&gt;</p>
-<h2 id="百度收录站点"><a href="#百度收录站点" class="headerlink" title="百度收录站点"></a>百度收录站点</h2><p>这个的教程百度一抹多，此处略。<br>but …  仍想吐槽一波<br><img src="/assets/blogImg/20180717-1.png" alt="百度站点收录"><br>这都多久了还没有收录成功   不知道还要等多久  ==!</p>
-<p>正式教程</p>
-<h2 id="谷歌收录站点"><a href="#谷歌收录站点" class="headerlink" title="谷歌收录站点"></a>谷歌收录站点</h2><p>查看是否被收录，z在搜索引擎上输入<code>site:momoko7.top</code>，与百度一样，如果能搜到则已被收录（如下图），否则就没有。<br><img src="/assets/blogImg/20180717-2.png" alt="谷歌站点收录"><br>Let’s go step by step ！</p>
-<h3 id="step1-验证网站"><a href="#step1-验证网站" class="headerlink" title="step1 验证网站"></a>step1 验证网站</h3><p>目的：验证网站是你的。<br>网址：<img src="https://www.google.com/webmasters/tools/home?hl=zh-CN" alt="谷歌搜索引擎提交入口"><br>1.登录成功后-&gt;添加属性-&gt;输入你站点的网址-&gt;进入验证页面<br><img src="/assets/blogImg/20180717-3.png" alt="谷歌验证网址"><br>2.我的域名是阿里云买的，貌似个别不同家域名的推荐验证方式不一样，总之直接按照推荐的方式进行验证就行了。hin简单的。<br><strong>需要注意的是：上传文件到站点目录时(也就是上图中的第2步)，直接复制该文件到source目录下，但由于是html文件，<code>hexo -d</code>时会默认将其编辑成网页文件，所以必须要加上<code>layout:false</code>，如下：</strong><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">layout:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">"googlesearch"</span></span><br><span class="line"><span class="attr">date:</span> </span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">google-site-verification:</span> <span class="string">googleb02xxxxxxxxxxxx.html</span></span><br></pre></td></tr></table></figure></p>
-<p>3.继续上图中的第3步，出现如下结果则说明验证成功<br><img src="/assets/blogImg/20180717-4.png" alt="谷歌验证网址"><br>4.人机身份验证。约莫一两分钟之后你就可在google搜索到你的博客啦~  是不是hin快呢</p>
-<p>谷歌相对于百度 这效率简直不能更高了  分分钟就搞定了</p>
-<h3 id="step2-生成站点地图"><a href="#step2-生成站点地图" class="headerlink" title="step2 生成站点地图"></a>step2 生成站点地图</h3><h3 id="课堂笔记"><a href="#课堂笔记" class="headerlink" title="课堂笔记"></a>课堂笔记</h3><h4 id="1-很多时候我们会忘记是否安装过某个模块，这个时候怎么办呢？"><a href="#1-很多时候我们会忘记是否安装过某个模块，这个时候怎么办呢？" class="headerlink" title="1.很多时候我们会忘记是否安装过某个模块，这个时候怎么办呢？"></a>1.很多时候我们会忘记是否安装过某个模块，这个时候怎么办呢？</h4><ul>
-<li>去看 node_modules 文件夹的目录</li>
-<li>运行 <code>npm list [pkg]</code>命令<ul>
-<li>查看某个项目是否安装，就在该目录下运行<code>npm list [pkg]</code></li>
-<li>查看是否全局安装，则运行<code>npm list [pkg] -g</code><br>例：<img src="/assets/blogImg/20180717-5.png" alt="cmd"><br>由于<code>hexo-generator-sitemap</code>是局部安装，所以第一条命令输出empty，第二条命令直接输出模块名以及版本号。</li>
-</ul>
-</li>
-</ul>
-<p>end today<br>晚安</p>
-
+        <p>目的：让你的文章在google中被搜索到并排名靠前</p>
+        
+          <a class="article-more-a" href="/测试google收录testtesttest-md.html#more">more >></a>
+        
       
 
       
