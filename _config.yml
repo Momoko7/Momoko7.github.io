@@ -85,7 +85,7 @@ deploy:
        #github: https://github.com/momoko7/momoko7.github.io.git
        # coding: git@git.coding.net:momoko7/momoko7.git
        #coding: https://Momoko7:@git.coding.net/Momoko7/momoko7.github.io.git
-    # branch: master
+    branch: master
   - type: baidu_url_submitter
 #deploy:
  # type: git
