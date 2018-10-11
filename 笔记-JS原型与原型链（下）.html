@@ -387,33 +387,38 @@
 
 
   
-  
-  
 
   
 
   
 
   
-  <div id="gitment-ctn"></div>
-<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
-<link rel="stylesheet" href="/assets/demo/css/gitment.css">
 
-<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "笔记-JS原型与原型链（下）",
-  owner: 'Momoko7',
-  repo: 'Momoko7.github.io',
-  oauth: {
-    client_id: '20bba6680124afeb929f',
-    client_secret: 'c0737b759f88ee7681a9e872438b9c68c96e9891',
-  },
-})
-gitment.render('gitment-ctn')
+  
+
+
+<!--gitalt 配置代码-->
+
+<div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+  if(true){
+    var gitalk = new Gitalk({
+      clientID: '20bba6680124afeb929f',
+      clientSecret: 'c0737b759f88ee7681a9e872438b9c68c96e9891',
+      repo: 'Momoko7.github.io',
+      owner: 'Ziven-n',
+      admin: ['Momoko7'],
+      id: 'Sat May 12 2018 16:54:00 GMT+0800',
+      distractionFreeMode: 'true'
+    })
+    gitalk.render('gitalk-container')
+  }
 </script>
 
-  
 
 
           </div>
