@@ -388,6 +388,27 @@ merge = refs/heads/master
 
 <!--gitalt 配置代码-->
 
+<div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+  if(true){
+    var gitalk = new Gitalk({
+      clientID: '0bec5f25dc6b8c51c933',
+      clientSecret: '84ec7c6006a3624abbbd504eed81b55076261913',
+      repo: 'gitalk-of-blog',
+      owner: 'Momoko7',
+      admin: ['Momoko7'],
+      id: 'Sun May 13 2018 18:47:23 GMT+0800',
+      distractionFreeMode: 'true'
+    })
+    gitalk.render('gitalk-container')
+  }
+</script>
+
+
 
           </div>
         </div>
