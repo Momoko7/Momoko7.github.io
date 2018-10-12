@@ -119,5 +119,6 @@ jsonContent:
         tags: true
         
 # Miscellaneous  统计
-baidu_analytics: '7a4963fa22c281ab3c4b3429067dd4ad'
+#baidu_analytics: '7a4963fa22c281ab3c4b3429067dd4ad'
+baidu_analytics: 'be46b3caf5e542c54df8a892e5bcf238'
 # google_analytics: 'UA-9700xxxxxxxx'
